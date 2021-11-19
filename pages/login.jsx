@@ -18,7 +18,6 @@ export default function login(props) {
     setLoginData(auxData)
   }
 
-
   function sendDataToBackend(event) {
     event.preventDefault()
     console.log(loginData)
