@@ -1,5 +1,4 @@
 .button{
-    width: auto;
     height: 40px;
     padding: 0 10px ;
 
@@ -24,6 +23,8 @@
     -ms-transition: .3s;
     -o-transition: .3s;
 
+    cursor: pointer;
+
     &:hover{
         filter: brightness(.8);
         -webkit-filter: brightness(.8);
@@ -31,6 +32,18 @@
 
     &.full{
         width: 100%;
+    }
+    &.small{
+        width: 200px;
+    }
+    &.medium{
+        width: 400px;
+    }
+    &.medium{
+        width: 400px;
+    }
+    &.large{
+        width: 600px;
     }
 
     &.blue{

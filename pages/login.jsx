@@ -34,7 +34,7 @@ export default function login(props) {
             <h1>Cuidador de vacas</h1>
             <Input handle={event => handleInput(event)} name="user" label="Usuário" type="text"/>
             <Input handle={event => handleInput(event)} name="password" label="Senha" type="password"/>
-            <Button>Entrar</Button>
+            <Button size="small" color="blue" clickFunction={() => console.log("teste")}>Entrar</Button>
           </form>
         </div>
         <div className={styles.areaRight}></div>

@@ -3,25 +3,27 @@ import Link from 'next/link'
 
 export default function Button(props) {
 
-  if(typeof clickFunction === "function"){
+  if(typeof props.clickFunction === "function"){
       return(
         <button
             className={`
               ${styles.button}
-              ${props.size === 'full' ? styles.full : ''}
+              ${styles[props.size]}
+              ${styles[props.color]}
             `}
             onClick={props.clickFunction}
         >{props.children}</button>
       )
   } else{
     return(
-      <Link href={clickFunction} target={props.blank ? "__blank" : ""}>
-      <div
-        className={`
-          ${styles.button}
-          ${props.size === 'full' ? styles.full : ''}
-        `}
-      >{props.children}</div>
+      <Link href={props.clickFunction ? props.clickFunction : ''} target={props.blank ? "__blank" : ""}>
+        <a
+          className={`
+            ${styles.button}
+            ${styles[props.size]}
+            ${styles[props.color]}
+          `}
+        >{props.children}</a>
       </Link>
     )
   }
