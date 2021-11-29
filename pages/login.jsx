@@ -1,6 +1,5 @@
 import styles from '../styles/login.module.scss'
 import Input from  '../components/Input.jsx'
-import Button from '../components/Button'
 import { useState } from 'react';
 import axios from 'axios'
 
@@ -20,25 +19,21 @@ export default function login(props) {
 
   function sendDataToBackend(event) {
     event.preventDefault()
-    console.log(loginData)
     axios.post('/api/login', loginData).then((response) => {
-      console.log(response.data.success)
+      if(response.data.success){
+        window.location.href = "/"
+      }
     })
   }
 
   return(
-    <main>
-      <div className={styles.content}>
-        <div className={styles.areaLeft}>
-          <form onSubmit={sendDataToBackend}>
-            <h1>Cuidador de vacas</h1>
-            <Input handle={event => handleInput(event)} name="user" label="Usuário" type="text"/>
-            <Input handle={event => handleInput(event)} name="password" label="Senha" type="password"/>
-            <Button size="small" color="blue" clickFunction={() => console.log("teste")}>Entrar</Button>
-          </form>
-        </div>
-        <div className={styles.areaRight}></div>
-      </div>
+    <main className={styles.main}>
+      <form className={styles.content} onSubmit={sendDataToBackend}>
+        <h1 className={styles.titulo}>Login</h1>
+        <Input handle={event => handleInput(event)} name="user" label="Usuário" type="text"/>
+        <Input handle={event => handleInput(event)} name="password" label="Senha" type="password"/>
+        <button type="submit" className={styles.button}>Entrar</button>
+      </form>
     </main>
   )
 }

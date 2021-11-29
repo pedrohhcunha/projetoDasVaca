@@ -1,0 +1,27 @@
+.areaInput{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .label{
+        width: 100%;
+        text-align: left;
+        font-weight: 600;
+        color: var(--blue);
+    }
+
+    .input{
+        width: 100%;
+        height: 40px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--blue);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        padding: 0 10px;
+        color: var(--blue);
+        outline: none;
+    }
+}
