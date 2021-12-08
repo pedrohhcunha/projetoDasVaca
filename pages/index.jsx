@@ -1,6 +1,7 @@
 
 import styles from '../styles/Index.module.scss'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBriefcaseMedical, faCalendar, faChartLine, faHatCowboy, faUsers, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
 export default function Index() {
@@ -13,37 +14,37 @@ export default function Index() {
       <div className={styles.options}>
         <Link href="/">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+          <div className={styles.areaImg}><FontAwesomeIcon icon={faChartLine} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Dashboard</h2>
           </a>
         </Link>
         <Link href="/">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+            <div className={styles.areaImg}><FontAwesomeIcon icon={faBriefcaseMedical} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Medicamentos</h2>
           </a>
         </Link>
         <Link href="/vacas">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+          <div className={styles.areaImg}><FontAwesomeIcon icon={faHatCowboy} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Vacas</h2>
           </a>
         </Link>
         <Link href="/">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+          <div className={styles.areaImg}><FontAwesomeIcon icon={faCalendar} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Calendario</h2>
           </a>
         </Link>
         <Link href="/">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+          <div className={styles.areaImg}><FontAwesomeIcon icon={faSpinner} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Ciclos</h2>
           </a>
         </Link>
         <Link href="/">
           <a className={styles.option}>
-            <div className={styles.areaImg}>Img</div>
+          <div className={styles.areaImg}><FontAwesomeIcon icon={faUsers} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Profissionais</h2>
           </a>
         </Link>
