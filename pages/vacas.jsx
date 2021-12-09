@@ -3,6 +3,7 @@ import Input from '../components/Input'
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
 
 export default function Vacas(props) {
 
@@ -35,8 +36,25 @@ export default function Vacas(props) {
     const handleSubmitCriar = event => {
         event.preventDefault()
 
-        console.log(dataFormCriar)
+        axios.post('/api/criar_vaga', dataFormCriar).then((response) => {
+            console.log(response.data)
+            if(response.data.success){
+              setVacas([...vacas, response.data.vaca_adicionada])
+              setStateModalCreate(false)
+            }
+        })
     }
+
+    const [vacas, setVacas] = useState([
+        {
+            nome: "vaca",
+            codigo: "sdsdsd",
+            raca: "sdsdsd",
+            sexo: "sdsd",
+            data: "sdsd",
+            status: true
+        }
+    ]);
 
     return(
         <main className={styles.main}>
@@ -59,30 +77,16 @@ export default function Vacas(props) {
                         </th>
                     </thead>
                     <tbody>
-                        <tr className={styles.linha}>
-                            <td>0002</td>
-                            <td>Jucelina</td>
-                            <td>Faminino</td>
-                            <td>Pintada</td>
-                            <td>10/05/1997</td>
-                            <td>---</td>
-                        </tr>
-                        <tr className={styles.linha}>
-                            <td>0002</td>
-                            <td>Jucelina</td>
-                            <td>Faminino</td>
-                            <td>Pintada</td>
-                            <td>10/05/1997</td>
-                            <td>---</td>
-                        </tr>
-                        <tr className={styles.linha}>
-                            <td>0002</td>
-                            <td>Jucelina</td>
-                            <td>Faminino</td>
-                            <td>Pintada</td>
-                            <td>10/05/1997</td>
-                            <td>---</td>
-                        </tr>
+                        {vacas.map((vaca, index) => (
+                            <tr key={index} className={styles.linha}>
+                                <td>{vaca.codigo}</td>
+                                <td>{vaca.nome}</td>
+                                <td>{vaca.sexo}</td>
+                                <td>{vaca.raca}</td>
+                                <td>{vaca.data}</td>
+                                <td>{vaca.status ? "disponivel" : "indisponivel"}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

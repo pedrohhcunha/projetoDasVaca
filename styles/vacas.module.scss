@@ -52,6 +52,15 @@
                 margin: 10px;
             }
 
+            .linha{
+                background-color: #f6fff6;
+                cursor: pointer;
+
+                &:hover{
+                    filter: brightness(.9);
+                }
+            }
+
             td{
                 border-top: 1px solid var(--black);
                 padding: 10px 0;
