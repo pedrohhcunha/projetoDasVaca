@@ -12,7 +12,7 @@ export default function Index() {
     <main className={styles.main}>
       <h1 className={styles.titulo}>Bem vindo, {user.name}</h1>
       <div className={styles.options}>
-        <Link href="/dashboard">
+        <Link href="/">
           <a className={styles.option}>
           <div className={styles.areaImg}><FontAwesomeIcon icon={faChartLine} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Dashboard</h2>
@@ -30,7 +30,7 @@ export default function Index() {
             <h2 className={styles.tituloOption}>Vacas</h2>
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/calendario">
           <a className={styles.option}>
           <div className={styles.areaImg}><FontAwesomeIcon icon={faCalendar} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Calendario</h2>
