@@ -16,17 +16,17 @@ function Calendario() {
     currentMonth = today.getMonth(),
     dataSource = [
       {
-        label: 'Google AdWords Strategy',
+        label: 'Vacinar as vacas',
         dateStart: new Date(currentYear, currentMonth, todayDate, 9, 0),
         dateEnd: new Date(currentYear, currentMonth, todayDate, 10, 30),
         backgroundColor: '#E67C73'
       }, {
-        label: 'New Brochures',
+        label: 'Visita ao frigorifico',
         dateStart: new Date(currentYear, currentMonth, todayDate - 1, 11, 30),
         dateEnd: new Date(currentYear, currentMonth, todayDate - 1, 14, 15),
         backgroundColor: '#8E24AA'
       }, {
-        label: 'Brochure Design Review',
+        label: 'Tirar folga',
         dateStart: new Date(currentYear, currentMonth, todayDate + 2, 13, 15),
         dateEnd: new Date(currentYear, currentMonth, todayDate + 2, 16, 15),
         backgroundColor: '#039BE5'
@@ -34,7 +34,7 @@ function Calendario() {
     ],
     currentTimeIndicator = true,
     shadeUntilCurrentTime = true,
-    view = 'day',
+    view = 'month',
     views = ['day', 'week', 'month', 'timelineDay', 'timelineWeek', 'timelineMonth'],
     firstDayOfWeek = 1;
 
@@ -49,8 +49,7 @@ function Calendario() {
         <h1 className={styles.title}>
           O seu calendario
         </h1>
-        <Scheduler className={styles.scheduler} id="scheduler" currentTimeIndicator={currentTimeIndicator} shadeUntilCurrentTime={shadeUntilCurrentTime} 
-        dataSource={dataSource} view={view} views={views} firstDayOfWeek={firstDayOfWeek}></Scheduler>
+        <Scheduler className={styles.scheduler} id="scheduler" currentTimeIndicator={currentTimeIndicator} shadeUntilCurrentTime={shadeUntilCurrentTime} dataSource={dataSource} view={view} views={views} firstDayOfWeek={firstDayOfWeek}></Scheduler>
       </main>
     </div>
   );
