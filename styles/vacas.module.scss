@@ -200,4 +200,51 @@
             }
         }
     }
+
+    .asideForm{
+        .modalMostrarVaca{
+            background-color: var(--white);
+            width: 700px;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+
+            .iconClose{
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                color: var(--black);
+                cursor: pointer;
+                max-width: 20px;
+            }
+
+            .areaTopo{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                .areaFoto{
+                    width: 150px;
+                    height: 150px;
+                    background-color: var(--blue);
+                }
+    
+                .areaInfoTopo{
+                    color: var(--blue);
+                    margin-left: 10px;
+
+                    h2{
+                        font-size: 15px;
+                        opacity: .6;
+                        margin-top: 10px;
+
+                        strong{
+                            color: green;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

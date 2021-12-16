@@ -2,12 +2,16 @@ import styles from '../styles/vacas.module.scss'
 import Input from '../components/Input'
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { faUpload, faTimes } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 export default function Vacas(props) {
 
     const [stateModalCreate, setStateModalCreate] = useState(false);
+
+    const [statusModalViewVaca, setStatusModalViewVaca] = useState(false);
+
+    const [atualVacaView, setAtualVacaView] = useState(0);
 
     useEffect(() => {
         document.addEventListener("keydown", event => {
@@ -78,7 +82,10 @@ export default function Vacas(props) {
                     </thead>
                     <tbody>
                         {vacas.map((vaca, index) => (
-                            <tr key={index} className={styles.linha}>
+                            <tr onClick={() => {
+                                setStatusModalViewVaca(true)
+                                setAtualVacaView(index)
+                            }} key={index} className={styles.linha}>
                                 <td>{vaca.codigo}</td>
                                 <td>{vaca.nome}</td>
                                 <td>{vaca.sexo}</td>
@@ -106,6 +113,23 @@ export default function Vacas(props) {
                     <Input handle={event => handleInput(event)} name="sexo" label="Sexo do bovino" type="text"/>
                     <button type="submit" className={styles.buttonEnviar}>Cadastrar</button>  
                 </form>
+            </aside>
+            <aside className={`${styles.asideForm} ${statusModalViewVaca ? styles.active : ""}`}>
+                <div className={styles.modalMostrarVaca}>
+                    <FontAwesomeIcon onClick={() => setStatusModalViewVaca(false)} className={styles.iconClose} icon={faTimes}/>
+                    <div className={styles.areaTopo}>
+                        <div className={styles.areaFoto}>
+
+                        </div>
+                        <div className={styles.areaInfoTopo}>
+                            <h1>{vacas[atualVacaView].nome}</h1>
+                            <h2>{`Código: ${vacas[atualVacaView].codigo}`}</h2>
+                            <h2>{`Sexo: ${vacas[atualVacaView].sexo}`}</h2>
+                            <h2>{`Data de entrada: ${vacas[atualVacaView].data}`}</h2>
+                            <h2>{`Status: ${vacas[atualVacaView].status}`}</h2>
+                        </div>
+                    </div>
+                </div>
             </aside>
         </main>
     )
