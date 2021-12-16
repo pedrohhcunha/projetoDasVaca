@@ -1,6 +1,6 @@
 import styles from '../styles/login.module.scss'
 import Input from  '../components/Input.jsx'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios'
 
 export default function login(props) {
@@ -9,6 +9,14 @@ export default function login(props) {
     user: "",
     password: ""
   });
+
+  function validateUser() {
+    let user = localStorage.getItem("user");
+
+    if(user){
+      window.location.href = "/"
+    }
+  }
 
   function handleInput(event) {
     let auxData = {...loginData}
@@ -21,10 +29,13 @@ export default function login(props) {
     event.preventDefault()
     axios.post('/api/login', loginData).then((response) => {
       if(response.data.success){
-        window.location.href = "/"
+        localStorage.setItem('user', 1);
+        validateUser()
       }
     })
   }
+
+  useEffect(validateUser, []);
 
   return(
     <main className={styles.main}>
