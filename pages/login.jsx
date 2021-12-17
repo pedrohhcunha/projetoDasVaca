@@ -31,6 +31,8 @@ export default function login(props) {
         if(validateUser()){
           window.location.href = "/"
         }
+      } else {
+        setErroMsg(response.data.message)
       }
     })
   }
@@ -41,12 +43,19 @@ export default function login(props) {
     }
   }, []);
 
+  const [erroMsg, setErroMsg] = useState("");
+
   return(
     <main className={styles.main}>
       <form className={styles.content} onSubmit={sendDataToBackend}>
         <h1 className={styles.titulo}>Login</h1>
         <Input handle={event => handleInput(event)} name="user" label="Usuário" type="text"/>
         <Input handle={event => handleInput(event)} name="password" label="Senha" type="password"/>
+        {erroMsg !== "" &&
+          <div className={styles.areaErro}>
+            {erroMsg}
+          </div>
+        }
         <button type="submit" className={styles.button}>Entrar</button>
       </form>
     </main>
