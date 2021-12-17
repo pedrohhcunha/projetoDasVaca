@@ -13,9 +13,7 @@ export default function login(props) {
   function validateUser() {
     let user = localStorage.getItem("user");
 
-    if(user){
-      window.location.href = "/"
-    }
+    return user
   }
 
   function handleInput(event) {
@@ -30,12 +28,18 @@ export default function login(props) {
     axios.post('/api/login', loginData).then((response) => {
       if(response.data.success){
         localStorage.setItem('user', 1);
-        validateUser()
+        if(validateUser()){
+          window.location.href = "/"
+        }
       }
     })
   }
 
-  useEffect(validateUser, []);
+  useEffect(() => {
+    if(validateUser()){
+      window.location.href = "/"
+    }
+  }, []);
 
   return(
     <main className={styles.main}>

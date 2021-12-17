@@ -2,7 +2,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import styles from '../styles/calendario.module.scss'
 import 'smart-webcomponents-react/source/styles/smart.default.css';
-
+import { useEffect } from 'react';
 
 //Dynamically import the Smart.Scheduler component
 const Scheduler = dynamic(() => import('smart-webcomponents-react/scheduler'), {
@@ -10,6 +10,19 @@ const Scheduler = dynamic(() => import('smart-webcomponents-react/scheduler'), {
 })
 
 function Calendario() {
+
+  function validateUser() {
+    let user = localStorage.getItem("user");
+
+    return user
+  }
+
+  useEffect(() => {
+    if(!validateUser()){
+      window.location.href = "/login"
+    }
+  }, []);
+
   const today = new Date(),
     todayDate = today.getDate(),
     currentYear = today.getFullYear(),

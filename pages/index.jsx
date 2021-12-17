@@ -1,10 +1,28 @@
 
 import styles from '../styles/Index.module.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBriefcaseMedical, faCalendar, faChartLine, faHatCowboy, faUsers, faSpinner} from '@fortawesome/free-solid-svg-icons'
+import {faBriefcaseMedical, faCalendar, faChartLine, faHatCowboy, faUsers, faSpinner, faAngleLeft} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function Index() {
+
+  function logout() {
+    localStorage.removeItem("user");
+    window.location.href = "/login"
+  }
+  function validateUser() {
+    let user = localStorage.getItem("user");
+
+    return user
+  }
+
+  useEffect(() => {
+    if(!validateUser()){
+      window.location.href = "/login"
+    }
+  }, []);
+
   const user = {
     name: 'Pedro Henrique '
   }
@@ -49,6 +67,10 @@ export default function Index() {
           </a>
         </Link>
       </div>
+      <aside onClick={logout} className={styles.logout}>
+        <FontAwesomeIcon icon={faAngleLeft} className={styles.icon} />
+        <span>Sair</span>
+      </aside>
     </main>
   )
 }

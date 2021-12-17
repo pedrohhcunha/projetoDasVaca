@@ -7,6 +7,18 @@ import axios from 'axios'
 
 export default function Vacas(props) {
 
+    function validateUser() {
+        let user = localStorage.getItem("user");
+
+        return user
+    }
+    
+    useEffect(() => {
+        if(!validateUser()){
+            window.location.href = "/login"
+        }
+    }, []);
+
     const [stateModalCreate, setStateModalCreate] = useState(false);
 
     const [statusModalViewVaca, setStatusModalViewVaca] = useState(false);
