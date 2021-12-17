@@ -36,7 +36,7 @@ export default function Index() {
             <h2 className={styles.tituloOption}>Dashboard</h2>
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/medicamentos">
           <a className={styles.option}>
             <div className={styles.areaImg}><FontAwesomeIcon icon={faBriefcaseMedical} className={styles.icon} /></div>
             <h2 className={styles.tituloOption}>Medicamentos</h2>
