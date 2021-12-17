@@ -72,6 +72,16 @@ export default function Vacas(props) {
         }
     ]);
 
+    useEffect(() => {
+        console.log("buscando vacas")
+        axios.get('/api/vacas').then((response) => {
+            console.log(response.data)
+            if(response.data.success){
+                setVacas(response.data.vacas)
+            }
+          })
+    }, []);
+
     return(
         <main className={styles.main}>
             <div className={styles.areaTopo}>
