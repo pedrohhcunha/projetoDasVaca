@@ -21,11 +21,20 @@ export default function handler(req, res) {
                         message: "Erro do servidor, tente mais tarde!"
                     })
                 } else {
+                    let vacas = result.rows.map(row => {
+                        return {
+                            nome: row.nome,
+                            codigo: row.codigo_brinco,
+                            raca: row.raca,
+                            data: row.data_cadastro.toISOString().slice(0, 10),
+                            status: row.nome
+                        }
+                    })
                     console.log(result.rows)
                     return res.json({
                         success: true,
                         message: "Vacas enviadas com sucesso!",
-                        vacas: result.rows
+                        vacas: vacas
                     })
                 }
             })

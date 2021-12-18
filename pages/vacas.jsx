@@ -38,7 +38,6 @@ export default function Vacas(props) {
         nome: "",
         codigo: "",
         raca: "",
-        sexo: ""
     });
 
     const handleInput = event => {
@@ -66,7 +65,6 @@ export default function Vacas(props) {
             nome: "vaca",
             codigo: "sdsdsd",
             raca: "sdsdsd",
-            sexo: "sdsd",
             data: "sdsd",
             status: true
         }
@@ -75,9 +73,9 @@ export default function Vacas(props) {
     useEffect(() => {
         console.log("buscando vacas")
         axios.get('/api/vacas').then((response) => {
-            console.log(response.data)
             if(response.data.success){
                 setVacas(response.data.vacas)
+                console.log(response.data.vacas)
             }
           })
     }, []);
@@ -96,7 +94,6 @@ export default function Vacas(props) {
                         <th className={styles.linha}>
                             <td>N°</td>
                             <td>Nome</td>
-                            <td>Sexo</td>
                             <td>Raça</td>
                             <td>Data de entrada</td>
                             <td>---</td>
@@ -110,7 +107,6 @@ export default function Vacas(props) {
                             }} key={index} className={styles.linha}>
                                 <td>{vaca.codigo}</td>
                                 <td>{vaca.nome}</td>
-                                <td>{vaca.sexo}</td>
                                 <td>{vaca.raca}</td>
                                 <td>{vaca.data}</td>
                                 <td>{vaca.status ? "disponivel" : "indisponivel"}</td>
@@ -132,7 +128,6 @@ export default function Vacas(props) {
                     <Input handle={event => handleInput(event)} name="nome" label="Nome do bovino" type="text"/>                            
                     <Input handle={event => handleInput(event)} name="codigo" label="Código do brinco" type="text"/>                            
                     <Input handle={event => handleInput(event)} name="raca" label="Raça do bovino" type="text"/>
-                    <Input handle={event => handleInput(event)} name="sexo" label="Sexo do bovino" type="text"/>
                     <button type="submit" className={styles.buttonEnviar}>Cadastrar</button>  
                 </form>
             </aside>
